@@ -2,6 +2,10 @@ package co.simplon.poleEmploi.decouverte.jsp;
 
 public class Personne {
 
+	@Override
+	public String toString() {
+		return "Personne [nom=" + nom + ", prenom=" + prenom + "]";
+	}
 	private String nom;
 	private String prenom;
 	

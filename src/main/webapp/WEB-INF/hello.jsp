@@ -7,14 +7,11 @@
 </head>
 <body>
 
-<%-- <jsp:useBean id="name" class="java.lang.String" scope="request" /> --%>
-<%-- <p><%= name %> --%>
-<!--    fdgdfgdgf -->
-     <%--    <p>Bonjour ${ !empty name ? name : '' } --%>
-                <p>Bonjour ${ personne.prenom } ${ personne.nom }<br>
-                ${ personnec.prenom} ${ personnec.nom}
-        ${header['User-Agent']}</p>
-
+<jsp:useBean id="personnes" class="java.util.ArrayList" scope="request" />
+<%
+for (int i=0; i<personnes.size(); i++) {
+		out.println(personnes.get(i));
+}
+%>
 </body>
 </html>
-
