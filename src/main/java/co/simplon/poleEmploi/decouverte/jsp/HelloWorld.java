@@ -34,22 +34,45 @@ public class HelloWorld extends HttpServlet {
 		out.println("<h1>" + message + "</h1>");
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String message = messagePut;
-		String parametre = request.getParameter("nom");
-		if (parametre != null) {
-			message += parametre;
-		} else {
-			message += "World";
-		}
+//	public void doPost(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//	//	String message = messagePut;
+//	//	String parametre = request.getParameter("nom");
+//		//if (parametre != null) {
+//		//	message += parametre;
+//	//	} else {
+//		//	message += "World";
+//	
+//
+//		//response.setContentType("text/html");
+//
+//		//PrintWriter out = response.getWriter();
+//		//out.println("<h1>" + message + "</h1>");
+//String name = request.getParameter("nom");
+//request.setAttribute("name", name.toUpperCase());
+//	request.getRequestDispatcher("/WEB-INF/hello.jsp").forward(request, response);
+//	
+//	}
 
-		response.setContentType("text/html");
+	
+	  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	        Personne personne = new Personne();
+	      personne.setNom(request.getParameter("nom"));
+	    	      
+	      personne.setPrenom(request.getParameter("prenom"));
+	      
+	      Personne personnec =new Personne();
+personnec.setNom(request.getParameter("nomc"));	      
+personnec.setPrenom(request.getParameter("prenomc"));
 
-		PrintWriter out = response.getWriter();
-		out.println("<h1>" + message + "</h1>");
+	        request.setAttribute("personne", personne);
+	        request.setAttribute("personnec", personnec);
+	        this.getServletContext().getRequestDispatcher("/WEB-INF/hello.jsp").forward(request, response);
+	   
+	    
+
+
 	}
-
 	public void destroy() {
 
 	}
